@@ -1,18 +1,71 @@
-<form class="enquiry-form"
-      [formGroup]="enquiryForm"
-      (ngSubmit)="submitEnquiry()">
+<!-- PAGE HEADER -->
+<section class="contact-header">
+  <h1>CONTACT US</h1>
+  <p><span>Home</span> / Contact Us</p>
+</section>
 
-  <input type="text" placeholder="Your Name" formControlName="name">
+<!-- MAP SECTION -->
+<section class="map-section">
+  <h2>LOCATE US</h2>
 
-  <input type="email" placeholder="Email" formControlName="email">
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps?q=Chennai%20Window%20Systems%20Pvt%20Ltd&output=embed"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
 
-  <input type="text" placeholder="Phone Number" formControlName="phone">
+<!-- CONTACT + FORM -->
+<section class="contact-wrapper">
 
-  <textarea placeholder="Message" formControlName="message"></textarea>
+  <!-- LEFT INFO -->
+  <div class="contact-info">
 
-  <button type="submit">SEND MESSAGE</button>
+    <div class="info-card">
+      <h4>👤 Contact Person</h4>
+      <p>Karan</p>
+      <p>P. Vinoth Kumar</p>
+    </div>
 
-  <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
-  <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+    <div class="info-card">
+      <h4>📞 Mobile</h4>
+      <p>+91 91234 35678</p>
+      <p>+91 98765 41230</p>
+    </div>
 
-</form>
+    <div class="info-card">
+      <h4>📍 Address</h4>
+      <p>
+        No.38, Pattur Main Road,<br>
+        Behind Mannarsamy Temple,<br>
+        Pattur, Mangadu Post,<br>
+        Chennai – 600 122
+      </p>
+    </div>
+
+    <div class="info-card">
+      <h4>✉️ Email</h4>
+      <p>sleupvcwindows.com</p>
+    </div>
+
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="enquiry-box">
+    <h3>Enquire Now</h3>
+
+    <form [formGroup]="enquiryForm" (ngSubmit)="submitEnquiry()">
+      <input type="text" placeholder="Your Name" formControlName="name">
+      <input type="email" placeholder="Your Email" formControlName="email">
+      <input type="text" placeholder="Your Mobile No" formControlName="phone">
+      <textarea placeholder="Description" formControlName="message"></textarea>
+
+      <button type="submit">SEND</button>
+
+      <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
+      <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+    </form>
+  </div>
+
+</section>

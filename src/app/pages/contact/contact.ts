@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { EnquiryService } from '../../services/enquiry.service';
-
-
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule   // ✅ IMPORTANT
+  ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
@@ -31,19 +34,16 @@ export class Contact {
   }
 
   submitEnquiry() {
-    if (this.enquiryForm.invalid) {
-      return;
-    }
+    if (this.enquiryForm.invalid) return;
 
-    this.enquiryService.sendEnquiry(this.enquiryForm.value)
-      .subscribe({
-        next: () => {
-          this.successMsg = 'Enquiry sent successfully!';
-          this.enquiryForm.reset();
-        },
-        error: () => {
-          this.errorMsg = 'Something went wrong. Please try again.';
-        }
-      });
+    this.enquiryService.sendEnquiry(this.enquiryForm.value).subscribe({
+      next: () => {
+        this.successMsg = 'Enquiry sent successfully!';
+        this.enquiryForm.reset();
+      },
+      error: () => {
+        this.errorMsg = 'Something went wrong. Please try again.';
+      }
+    });
   }
 }
