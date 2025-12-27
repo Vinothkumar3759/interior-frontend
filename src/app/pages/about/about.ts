@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { initScrollAnimations } from '../../shared/scroll-animate';
 
@@ -11,7 +11,9 @@ import { initScrollAnimations } from '../../shared/scroll-animate';
 })
 export class AboutComponent implements AfterViewInit {
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngAfterViewInit(): void {
-    initScrollAnimations();
+    initScrollAnimations(this.platformId);
   }
 }
