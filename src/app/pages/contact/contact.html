@@ -1,0 +1,18 @@
+<form class="enquiry-form"
+      [formGroup]="enquiryForm"
+      (ngSubmit)="submitEnquiry()">
+
+  <input type="text" placeholder="Your Name" formControlName="name">
+
+  <input type="email" placeholder="Email" formControlName="email">
+
+  <input type="text" placeholder="Phone Number" formControlName="phone">
+
+  <textarea placeholder="Message" formControlName="message"></textarea>
+
+  <button type="submit">SEND MESSAGE</button>
+
+  <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
+  <p class="error" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+</form>
